@@ -25,6 +25,7 @@ p {
 .sep {
 	width: 200px;
 	height: 2px;
+	margin: 1rem auto;
 	background: #b0b0b0;
 }
 
@@ -55,4 +56,17 @@ button:hover {
 
 #btn2:hover {
 	background: rgb(42, 167, 140);
+}
+
+input {
+	border: none;
+	outline: none;
+	background: #e0e0e0;
+	padding: 0.5rem;
+	border-radius: 4px;
+	box-shadow: 2px 2px 6px #b0b0b0;
+}
+
+input::placeholder {
+	color: #808080;
 }
