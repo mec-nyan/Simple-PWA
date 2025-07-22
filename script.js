@@ -20,7 +20,7 @@ btn2.onclick = () => {
 
 const todoList = document.getElementById("todo");
 
-todoList.innerText = "Nothing to do.";
+todoList.innerHTML = "<p>Nothing to do.</p>"
 
 const STORAGE_KEY = "shit-to-do";
 
@@ -30,6 +30,10 @@ function addSomeShit(someShit) {
 	shitToDo.push(someShit);
 
 	window.localStorage.setItem(STORAGE_KEY, JSON.stringify(shitToDo));
+}
+
+function clearTheShit() {
+	window.localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
 }
 
 function getAllTheShit() {
@@ -56,17 +60,21 @@ userInput.onkeydown = (e) => {
 
 function refreshTodo(shitToDo) {
 	if (shitToDo.lenght > 0) {
-		todoList.innerText = "Nothing here.";
+		todoList.innerHTML = "<p>Nothing to do.</p>";
 	} else {
-		todoList.innerText = "Shit to do: ";
+		const newList = document.createElement("ul");
 		shitToDo.forEach((std) => {
-			todoList.innerText += `${std}, `;
+			const newEl = document.createElement("li");
+			newEl.innerText = `${std}`;
+			newList.appendChild(newEl);
 		})
+		todoList.innerHTML = "";
+		todoList.appendChild(newList);
 	}
 }
 
 const clearBtn = document.getElementById("btn3");
 clearBtn.onclick = () => {
-	window.localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+	clearTheShit();
 	todoList.innerText = "All cleared.";
 }
