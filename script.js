@@ -48,5 +48,19 @@ userInput.onkeydown = (e) => {
 		userInput.value = "";
 		console.log(`Item: ${newItem}`);
 		addSomeShit(newItem);
+
+		shitToDo = getAllTheShit();
+		refreshTodo(shitToDo);
+	}
+}
+
+function refreshTodo(shitToDo) {
+	if (shitToDo.lenght > 0) {
+		todoList.innerText = "Nothing here.";
+	} else {
+		todoList.innerText = "Shit to do: ";
+		shitToDo.forEach((std) => {
+			todoList.innerText += `${std}, `;
+		})
 	}
 }
