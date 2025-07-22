@@ -64,3 +64,9 @@ function refreshTodo(shitToDo) {
 		})
 	}
 }
+
+const clearBtn = document.getElementById("btn3");
+clearBtn.onclick = () => {
+	window.localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+	todoList.innerText = "All cleared.";
+}
